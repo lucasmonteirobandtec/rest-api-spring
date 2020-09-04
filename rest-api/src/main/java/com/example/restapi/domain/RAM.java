@@ -4,11 +4,11 @@ import com.example.restapi.domain.Componente;
 
 public class RAM extends Componente {
 
-    private Integer tamanho;
+    private String tamanho;
     private String tipo;
     private Double precoFinal;
 
-    public RAM(String nome, String marca, Double preco, String modelo, Integer tamanho, String tipo) {
+    public RAM(String nome, String marca, Double preco, String modelo, String tamanho, String tipo) {
         super(nome, marca, preco, modelo);
         this.tamanho = tamanho;
         this.tipo = tipo;
@@ -20,7 +20,7 @@ public class RAM extends Componente {
         return precoFinal;
     }
 
-    public Integer getTamanho() {
+    public String getTamanho() {
         return tamanho;
     }
 
@@ -35,7 +35,7 @@ public class RAM extends Componente {
     @Override
     public String toString() {
         return "RAM{" + super.toString() +
-                "tamanho=" + tamanho +
+                "tamanho=" + tamanho + '\'' +
                 ", tipo='" + tipo + '\'' +
                 '}';
     }

@@ -3,6 +3,7 @@ package com.example.restapi.controller;
 import com.example.restapi.domain.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class PcController {
 
 
 //    CREATE
+
     @PostMapping("/add/component/cpu")
     public void addCPU (@RequestBody CPU cpu) {
         lista.add(cpu);
@@ -51,7 +53,7 @@ public class PcController {
         return lista.get(x - 1);
     }
 
-    @GetMapping("/show/components")
+    @GetMapping("/show/computador")
     public List<Componente> getLista() {
         return lista;
     }
@@ -67,4 +69,79 @@ public class PcController {
 
 //    UPDATE
 
+    @PutMapping("/update/component/cpu")
+    public void updateCpu(@RequestBody CPU cpu) {
+        int i = 0;
+        for (Componente c : lista){
+            if (c instanceof CPU){
+                lista.set(i, cpu);
+            }
+            i++;
+        }
+    }
+
+    @PutMapping("/update/component/gpu")
+    public void updateGpu(@RequestBody GPU gpu) {
+        int i = 0;
+        for (Componente c : lista){
+            if (c instanceof GPU){
+                lista.set(i, gpu);
+            }
+            i++;
+        }
+    }
+
+    @PutMapping("/update/component/ram")
+    public void updateRam(@RequestBody RAM ram) {
+        int i = 0;
+        for (Componente c : lista){
+            if (c instanceof RAM){
+                lista.set(i, ram);
+            }
+            i++;
+        }
+    }
+
+    @PutMapping("/update/component/disk")
+    public void updateDisk(@RequestBody Armazenamento disk) {
+        int i = 0;
+        for (Componente c : lista){
+            if (c instanceof Armazenamento){
+                lista.set(i, disk);
+            }
+            i++;
+        }
+    }
+
+    @PutMapping("/update/component/motherboard")
+    public void updateMb(@RequestBody PlacaMae mb) {
+        int i = 0;
+        for (Componente c : lista){
+            if (c instanceof PlacaMae){
+                lista.set(i, mb);
+            }
+            i++;
+        }
+    }
+
+    @PutMapping("/update/component/powersupply")
+    public void updatePs(@RequestBody Fonte ps) {
+        int i = 0;
+        for (Componente c : lista){
+            if (c instanceof Fonte){
+                lista.set(i, ps);
+            }
+            i++;
+        }
+    }
+
+//    Delete
+
+    @DeleteMapping("/delete/component/{x}")
+    public void deleteComp(@PathVariable Integer x) {
+        lista.remove(x-1);
+    }
+
+
+//    EU ACABEI FAZENDO CREATE E UPDATE, POIS NAO ENTENDI, PERDAO PROFESSOR
 }
